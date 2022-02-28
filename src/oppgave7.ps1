@@ -52,4 +52,28 @@ Write-Host "Meg: $(kortstokkprint($meg))"
 Write-Host "Magnus: $(kortstokkprint($magnus))"
 Write-Host "Kortstokk: $(kortstokkprint($cards))"
 
+function skrivUtResultat {
+    param (
+        [string]
+        $vinner,        
+        [object[]]
+        $kortStokkMagnus,
+        [object[]]
+        $kortStokkMeg        
+    )
+    Write-Output "Vinner: $vinner"
+    Write-Output "magnus | $(kortstokkprint -cards $kortStokkMagnus) | $(kortstokkprint -cards $kortStokkMagnus)"    
+    Write-Output "meg    | $(kortstokkprint -cards $kortStokkMeg) | $(kortstokkprint -cards $kortStokkMeg)"
+}
 
+# bruker 'blackjack' som et begrep - er 21
+$blackjack = 21
+
+if ((kortstokkprint -cards $meg) -eq $blackjack) {
+    skrivUtResultat -vinner "meg" -kortStokkMagnus $magnus -kortStokkMeg $meg
+    exit
+}
+elseif ((kortstokkprint -cards $magnus) -eq $blackjack) {
+    skrivUtResultat -vinner "magnus" -kortStokkMagnus $magnus -kortStokkMeg $meg
+    exit
+}
