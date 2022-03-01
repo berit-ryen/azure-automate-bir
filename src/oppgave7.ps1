@@ -62,18 +62,18 @@ function skrivUtResultat {
         $kortStokkMeg        
     )
     Write-Output "Vinner: $vinner"
-    Write-Output "magnus | $(kortstokkprint -cards $kortStokkMagnus) | $(kortstokkprint -cards $kortStokkMagnus)"    
-    Write-Output "meg    | $(kortstokkprint -cards $kortStokkMeg) | $(kortstokkprint -cards $kortStokkMeg)"
+    Write-Output "magnus | $(sumPoengKortstokk -kortstokk $kortStokkMagnus) | $(kortstokkprint -cards $kortStokkMagnus)"    
+    Write-Output "meg    | $(sumPoengKortstokk -kortstokk $kortStokkMeg) | $(kortstokkprint -cards $kortStokkMeg)"
 }
 
 # bruker 'blackjack' som et begrep - er 21
 $blackjack = 21
 
-if ((kortstokkprint -cards $meg) -eq $blackjack) {
+if ((sumPoengKortstokk -kortstokk $meg) -eq $blackjack) {
     skrivUtResultat -vinner "meg" -kortStokkMagnus $magnus -kortStokkMeg $meg
     exit
 }
-elseif ((kortstokkprint -cards $magnus) -eq $blackjack) {
+elseif ((sumPoengKortstokk -kortstokk $magnus) -eq $blackjack) {
     skrivUtResultat -vinner "magnus" -kortStokkMagnus $magnus -kortStokkMeg $meg
     exit
 }
