@@ -196,6 +196,7 @@ $blackjack = 21
 
 if (((sumPoengKortstokk -kortstokk $meg) -eq $blackjack) -and ((sumPoengKortstokk -kortstokk $magnus) -eq $blackjack)) {
     skrivUtResultat -vinner "draw" -kortStokkMagnus -kortStokkMeg
+    exit
 }
 elseif ((sumPoengKortstokk -kortstokk $meg) -eq $blackjack) {
     skrivUtResultat -vinner "meg" -kortStokkMagnus $magnus -kortStokkMeg $meg
@@ -213,7 +214,7 @@ elseif ((sumPoengKortstokk -kortstokk $magnus) -eq $blackjack) {
 
 while ((sumPoengKortstokk -kortstokk $meg) -lt 17) {
     $meg += $kortstokk[0]
-    $kortstokk = $kortstokk[1..$kortstokkJson.Count]
+    $kortstokk = $kortstokk[1..$kortstokk.Count]
 }
 
 if ((sumPoengKortstokk -kortstokk $meg) -gt $blackjack) {
