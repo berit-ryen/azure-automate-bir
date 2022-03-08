@@ -194,6 +194,8 @@ function skrivUtResultat {
 # bruker 'blackjack' som et begrep - er 21
 $blackjack = 21
 
+
+
 if ((sumPoengKortstokk -kortstokk $meg) -eq $blackjack) {
     skrivUtResultat -vinner "meg" -kortStokkMagnus $magnus -kortStokkMeg $meg
     exit
