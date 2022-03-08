@@ -41,7 +41,33 @@ $kortstokk
 }
 
 Write-host "Kortstokk: $(kortstokkprint($cards))"
-Write-Host "Poengsum: $sum"
+Write-Host "Poengsum (kortstokkprint): $sum"
+
+##
+function sumPoengKortstokk {
+    [OutputType([int])]
+    param (
+        [object[]]
+        $kortstokk
+    )
+
+    $poengKortstokk = 0
+
+    foreach ($card in $kortstokk) {
+        # Undersøk hva en Switch er
+        $poengKortstokk += switch ($card.value) {
+            { $_ -cin @('J', 'Q', 'K') } { 10 }
+            'A' { 11 }
+            default { $card.value }
+        }
+    }
+    return $poengKortstokk
+}
+
+Write-Output "Poengsum (sumPoengkortstokk): $(sumPoengKortstokk -kortstokk $kortstokk)"
+#
+#
+
 
 $meg = $cards[0..1]
 $cards = $cards[2..$cards.Length]

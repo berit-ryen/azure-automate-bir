@@ -40,17 +40,17 @@ foreach ($card in $cards) {
 $kortstokk
 }
 
-Write-host "Kortstokk: $(kortstokkprint($cards))"
-Write-Host "Poengsum: $sum"
+Write-Output "Kortstokk: $(kortstokkprint($cards))"
+Write-Output "Poengsum: $sum"
 
 $meg = $cards[0..1]
 $cards = $cards[2..$cards.Length]
 $magnus = $cards[0..1]
 $cards = $cards[2..$cards.Length]
 
-Write-Host "Meg: $(kortstokkprint($meg))"
-Write-Host "Magnus: $(kortstokkprint($magnus))"
-Write-Host "Kortstokk: $(kortstokkprint($cards))"
+Write-Output "Meg: $(kortstokkprint($meg))"
+Write-Output "Magnus: $(kortstokkprint($magnus))"
+Write-Output "Kortstokk: $(kortstokkprint($cards))"
 
 function skrivUtResultat {
     param (
